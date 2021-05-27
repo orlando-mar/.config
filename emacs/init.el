@@ -15,6 +15,7 @@
 
 (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
 (setq inhibit-splash-screen t) 
+(setq-default custom-file null-device)
 (electric-indent-mode -1)
 (global-display-line-numbers-mode 1)
 
@@ -26,6 +27,11 @@
 ; backups & autosaves
 (setq backup-directory-alist '(("." . "~/.backups/")))
 (setq auto-save-file-name-transforms `((".*" "~/.backups/" t)))
+
+; magit
+
+(use-package magit
+  :ensure t)
 
 ; counsel & related 
 
