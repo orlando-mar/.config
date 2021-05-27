@@ -46,6 +46,8 @@
 
 ; term
 
+(use-package multi-term
+  :ensure t)
 (global-set-key (kbd "C-c C-t") 'multi-term)
 (add-hook 'term-mode-hook 'inhibit-display-line-numbers-mode)
 (defun inhibit-display-line-numbers-mode ()
@@ -56,8 +58,6 @@
 ;; the initial buffer is set here because it's a term window, and we need the term-mode-hook defined before opening a term buffer
 (setq initial-buffer-choice (multi-term))
 (rename-buffer "term_local")
-(use-package multi-term
-  :ensure t)
 
 ; markdown
 
@@ -84,16 +84,3 @@
 (load-theme 'nord t)
 
 ; end init.el
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
