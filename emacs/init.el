@@ -59,6 +59,18 @@
 (use-package multi-term
   :ensure t)
 
+; markdown
+
+(custom-set-variables
+ '(markdown-command "/opt/homebrew/bin/multimarkdown"))
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
 ; theme & appearance
 
 (scroll-bar-mode -1)
