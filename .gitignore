@@ -1,0 +1,5 @@
+**/elpa/
+**/tmp/
+**/auto-save-list/
+bookmarks
+.zsh_history
