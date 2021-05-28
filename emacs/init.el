@@ -33,6 +33,15 @@
 (use-package magit
   :ensure t)
 
+; auto-completion
+
+(use-package company
+  :ensure t)
+(use-package company-fuzzy
+  :ensure t)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'global-company-fuzzy-mode)
+
 ; counsel & related 
 
 (use-package counsel
@@ -42,6 +51,13 @@
 (global-set-key (kbd "C-s") 'swiper)
 
 ; file system navigation
+
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("C-c C-p" . projectile-command-map)))
 
 (use-package neotree
   :ensure t

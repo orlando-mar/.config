@@ -2,4 +2,6 @@
 **/tmp/
 **/auto-save-list/
 **/url/
+**/transient
+*.eld
 .zsh_history
