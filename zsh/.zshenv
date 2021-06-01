@@ -1,6 +1,6 @@
 # general
 
-export CONFIG_DIR="$HOME/.config"
+export CONFIG_DIR="$HOME/.orlando-mar-config"
 export EDITOR="nano"
 
 # zsh

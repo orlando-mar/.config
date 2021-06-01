@@ -1,6 +1,7 @@
 # load homebrew
 
 eval $(/opt/homebrew/bin/brew shellenv)
+export PATH="/usr/local/bin:$PATH"
 
 # load zsh extensions
 
