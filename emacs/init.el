@@ -1,9 +1,10 @@
-; package sources
+;;; package sources & initialization
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
+(add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)   
 (package-initialize)
+(package-refresh-contents)
 
 ;; make sure use-package is installed to install other packages
 
@@ -13,7 +14,7 @@
 
 ; general
 
-(add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
+(add-hook 'emacs-startup-hook 'toggle-frame-fullscreen t)
 (setq inhibit-splash-screen t) 
 (setq-default custom-file null-device)
 (electric-indent-mode -1)
@@ -92,6 +93,15 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+
+; org-mode
+
+(use-package org-journal
+  :ensure t
+  :config
+  (setq org-journal-dir "~/org/journal/"
+        org-journal-date-format "%A, %d %B %Y"
+	org-journal-file-type 'weekly))
 
 ; theme & appearance
 
