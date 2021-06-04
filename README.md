@@ -1,7 +1,20 @@
+# Screenshots
+
 ![term](screenshots/term_screenshot.png "Multi-term in emacs")
+
+Terminal emulation with `multi-term`
+
 ![swiper](screenshots/swiper.png "Improved isearch with swiper")
-![neotree-and-autocomplete](screenshots/neotree-and-autocomplete.png "File system navigation & incremental autocomplete"
+
+Improved isearch with `swiper`
+
+![neotree-and-autocomplete](screenshots/neotree-and-autocomplete.png "File system navigation & incremental autocomplete")
+
+File system navigation with `neotree` & incremental autocompletion with `company`
+
 ![magit](screenshots/magit.png "Git UI in emacs with Magit")
+
+Robust git integration with `magit`
 
 # Setup
 
