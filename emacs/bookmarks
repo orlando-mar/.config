@@ -3,7 +3,7 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("bookmarks"
- (filename . "~/.config/emacs/bookmarks")
+ (filename . "~/.orlando-mar-config/emacs/bookmarks")
  (front-context-string . ";;;; Emacs Bookm")
  (rear-context-string)
  (position . 1))
@@ -13,17 +13,17 @@
  (rear-context-string)
  (position . 1))
 (".zshrc"
- (filename . "~/.config/zsh/.zshrc")
+ (filename . "~/.orlando-mar-config/zsh/.zshrc")
  (front-context-string . "# load homebrew\n")
  (rear-context-string)
  (position . 1))
 (".zshenv"
- (filename . "~/.config/zsh/.zshenv")
+ (filename . "~/.orlando-mar-config/zsh/.zshenv")
  (front-context-string . "# general\n\nexpor")
  (rear-context-string)
  (position . 1))
 ("init.el"
- (filename . "~/.config/emacs/init.el")
+ (filename . "~/.orlando-mar-config/emacs/init.el")
  (front-context-string . "; package source")
  (rear-context-string)
  (position . 1))

@@ -1,20 +1,49 @@
-# setup
+![term](screenshots/term_screenshot.png "Multi-term in emacs")
+![swiper](screenshots/swiper.png "Improved isearch with swiper")
+![neotree-and-autocomplete](screenshots/neotree-and-autocomplete.png "File system navigation & incremental autocomplete"
+![magit](screenshots/magit.png "Git UI in emacs with Magit")
 
-This repo contains my various configuration files, including my emacs `init.el` and my zsh configs.
-You can use these configurations as follows:
+# Setup
 
-1. `git checkout` this repository into your `$HOME` dir
-1. create symlinks for the `.zshenv` and `emacs` dirs in your `$HOME` dir. If you are using an XDG-like base dir specification, you may be able to get away with not symlinking the emacs directory, assuming you've properly set `XDG_CONFIG_HOME` to `$HOME/.config` (this is the usual default for OS that use XDG specs). However, the `zshenv` dotfile *almost always* needs to be in your `$HOME` dir
-      - `ln -s ~/.config/emacs .emacs.d`
-      - `ln -s ~/.config/zsh/.zshenv .zsrhenv`
+This repo contains my emacs and zsh configuration files.
 
-# main highlights
+1. `git clone https://github.com/orlando-mar/.orlando-mar-config.git` into your `$HOME` dir
+1. create symlinks for the `.zshenv` and `emacs` dirs in your `$HOME` dir.
+      - `ln -s ~/.orlando-mar-config/emacs .emacs.d`
+      - `ln -s ~/.orlando-mar-config/zsh/.zshenv .zshenv`
 
-## emacs
+The first time you open emacs after adding my configuration you may receive some errors/warnings. These are mostly due to packages expecting additional dependencies that I did not include (e.g. `neotree` expects `projectile`). If you close and reopen emacs you should find that these warnings are gone
 
-- counsel-mode
-- markdown-mode (assumes you're using `multimarkdown` installed through homebrew - you can correct this yourself if that's not true)
-- multi-term
-- neotree
-- nord-theme
+# Emacs
 
+## Packages 
+
+(listed in order of appearance in `init.el`)
+
+- [use-package](https://melpa.org/#/use-package): makes installing packages & configuring easier
+- [magit](https://melpa.org/#/magit): powerful git interface within emacs
+- [company](https://melpa.org/#/company): incremental autocompletion
+- [company-fuzzy](https://melpa.org/#/company-fuzzy): fuzzy matching for company 
+- [counsel](https://melpa.org/#/counsel): enhanced ivy commands
+- [ivy](https://melpa.org/#/ivy): more incremental autocomplete
+- [swiper](https://github.com/abo-abo/swiper): better isearch
+- [neo-tree](https://melpa.org/#/neotree): file-system navigation
+- [multi-term](https://melpa.org/#/multi-term): better term-mode
+- [org-journal](https://melpa.org/#/org-journal): org-based journaling
+- [nord-theme](https://melpa.org/#/nord-theme): nice emacs theme using cool-colors
+
+## Custom keybindings
+
+(listed in order of appearance in `init.el`)
+
+- `C-c k`: kill current buffer. 
+- `C-c C-r`: rename current buffer
+- `C-s`: swiper isearch
+- `C-c C-n`: open neotree file navigation
+- `C-c C-t`: open new multi-term buffer
+
+# ZSH
+
+My `zshrc` is pretty simple because many of the configurations that people often use in `zsh` are unnecessary thanks to `emacs`.
+*Note:* I've included two lines to cover `homebrew` - on some machines you need the line starting with `eval` and on others you may need
+the update to your `$PATH`. I leave both and don't mind the error when it appears - if you do, then remove the offending line from the `zshrc`

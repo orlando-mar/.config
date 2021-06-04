@@ -50,15 +50,15 @@
   :ensure t)
 (use-package swiper
   :ensure t)
-(add-hook 'after-init-hook 'ivy-mode)
-(add-hook 'after-init-hook counsel-mode)
+(ivy-mode 1)
+(counsel-mode 1)
 (global-set-key (kbd "C-s") 'swiper)
 
 ;;; neotree
 
 (use-package neotree
   :ensure t
-  :configure
+  :config
   (setq neo-theme 'arrow
         neo-smart-open t))
 (global-set-key (kbd "C-c C-n") 'neotree)
