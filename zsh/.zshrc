@@ -1,6 +1,8 @@
 # load homebrew
 
-eval $(/opt/homebrew/bin/brew shellenv)
+if test -e /opt/homebrew/bin/brew; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
 export PATH="/usr/local/bin:$PATH"
 
 # load zsh extensions
@@ -9,7 +11,7 @@ autoload -U colors && colors
 autoload -Uz vcs_info
 PROMPT='%F{green}%*%f:%F{blue}%~%f %% '
 
-zstyle ':vcs_info:git:*' formats ' %K{black}%F{green} branch: %K{green}%F{black} %b %k'
+zstyle ':vcs_info:git:*' formats ' %K{black}%F{gren} branch: %K{green}%F{black} %b %k'
 precmd() {
     vcs_info
 }
@@ -17,7 +19,7 @@ precmd() {
 # prompt customization
 
 setopt PROMPT_SUBST
-export PROMPT='%B%F{cyan}%/${vcs_info_msg_0_}%F{cyan} > %f%b'
+export PROMPT='%B%F{yellow}%/${vcs_info_msg_0_}%F{cyan} > %f%b'
 
 # aliases
 
@@ -36,3 +38,9 @@ alias gs="git status"
 alias gst="git stash"
 alias gstl="git stash list"
 alias gstp="git stash pop"
+
+# load additional config - purposefully loads after to override these defaults
+
+if test -e ~/.config/zsh/; then
+    for zsh_config in ~/.config/zsh/*; do source $zsh_config; done;
+fi

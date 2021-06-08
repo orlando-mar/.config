@@ -3,5 +3,12 @@
 **/auto-save-list/
 **/url/
 **/transient
+**/.cache/
+**/eclipse.*/
+**/request/
+**/workspace/
+.dap*
+.lsp*
 *.eld
 .zsh_history
+.zshistory
