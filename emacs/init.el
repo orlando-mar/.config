@@ -239,11 +239,16 @@
   (set-face-attribute 'mode-line-inactive nil :height 120))
 
 ;;; initial buffer setup
-(persp-rename 'develop)
+(persp-rename "develop")
 (setq initial-buffer-choice (multi-term))
 (rename-buffer "term")
 (treemacs)
 (switch-to-buffer "term")
+(persp-switch "writing")
+(org-journal-new-entry 'todo)
+(delete-other-windows)
+(kill-buffer "*scratch* (writing)")
+(persp-switch "develop")
 
 
 ;;; end init.el
