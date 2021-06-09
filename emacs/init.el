@@ -188,7 +188,7 @@
   (load-theme 'doom-horizon t)
   (doom-themes-visual-bell-config)
   ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom")
+  (setq doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
 (use-package solaire-mode
