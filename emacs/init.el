@@ -144,7 +144,12 @@
   :ensure t
   :init
   (global-company-mode 1))
-
+(use-package company-fuzzy
+  :ensure t
+  :init
+  (global-company-fuzzy-mode 1)
+  :after (company))
+  
 ;;; yasnippet
 
 (use-package yasnippet 
@@ -196,7 +201,13 @@
 (use-package lsp-java 
   :ensure t
   :config 
-  (add-hook 'java-mode-hook 'lsp))
+  (add-hook 'java-mode-hook 'lsp)
+  (setq lsp-java-vmargs
+      (list
+         "-noverify"
+         "-Xmx1G"
+         "-XX:+UseG1GC"
+         "-XX:+UseStringDeduplication")))
 
 (use-package lsp-treemacs
   :after (lsp-mode treemacs)
