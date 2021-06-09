@@ -213,6 +213,7 @@
 (setq initial-buffer-choice (multi-term))
 (rename-buffer "term")
 (treemacs)
+(treemacs-collapse-all-projects)
 (switch-to-buffer "term")
 (persp-switch "writing")
 (org-journal-new-entry 'todo)
