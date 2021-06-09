@@ -44,6 +44,9 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
+(global-set-key (kbd "C-c k") 'kill-current-buffer)
+(global-set-key (kbd "C-c C-r") 'rename-buffer)
+
 (setq auto-save-file-name-transforms `((".*" "~/.backups/" t)))
 (setq backup-directory-alist '(("." . "~/.backups/")))
 (setq custom-file null-device)
@@ -200,6 +203,16 @@
   (doom-themes)
   :init
   (solaire-global-mode 1))
+
+;;;;; swiper
+
+(use-package swiper
+  :after
+  (ivy)
+  :bind
+  (:map global-map
+		("C-s" . swiper)
+		("C-r" . swiper-backward)))
 
 ;;;;; theme
 
