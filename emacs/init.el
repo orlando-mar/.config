@@ -132,7 +132,7 @@
 		("C-x t a" . treemacs-add-project-to-workspace)
         ("C-x t d" . treemacs-remove-project-from-workspace)
 		("C-x t h" . treemacs-narrow-to-current-file)
-		("C-x t q" . treemacs-add-and-display-current-project))
+		("C-x t q" . treemacs-add-and-display-current-project)))
 (add-hook 'treemacs-mode-hook (lambda () (text-scale-decrease 1)))
 
 (use-package treemacs-projectile
