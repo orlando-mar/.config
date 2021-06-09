@@ -74,7 +74,20 @@
   :config
   (setq org-journal-dir "~/org/journal/"
         org-journal-date-format "%A, %d %B %Y"
-	org-journal-file-type 'weekly))
+		org-journal-file-type 'weekly))
+
+
+;;; plantuml
+
+(use-package plantuml-mode
+  :ensure t
+  :config
+  (setq plantuml-default-exec-mode 'jar)
+  (setq plantuml-jar-path (expand-file-name "~/.config/emacs/plantuml/plantuml.jar"))
+  (setq org-plantuml-jar-path (expand-file-name "~/.config/emacs/plantuml/plantuml.jar"))
+  (add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
+  (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+  (plantuml-download-jar))
 
 ;;; projectile
 
