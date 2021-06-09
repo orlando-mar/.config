@@ -115,12 +115,13 @@
   :ensure t
   :after (lsp-mode)
   :config
-  (setq treemacs-width 35)
+  (setq treemacs-width 30)
   :bind
   (:map global-map
         ("C-x t t" . treemacs)
-	("C-x t a" . treemacs-add-project-to-workspace)
-        ("C-x t d" . treemacs-remove-project-from-workspace)))
+		("C-x t a" . treemacs-add-project-to-workspace)
+        ("C-x t d" . treemacs-remove-project-from-workspace)
+		("C-x t h" . treemacs-narrow-to-current-file)))
 (add-hook 'treemacs-mode-hook (lambda () (text-scale-decrease 1)))
 
 (use-package treemacs-projectile
@@ -221,7 +222,7 @@
 
 ;;; theme & appearance
 
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 145)
 (use-package doom-themes
   :ensure t
   :config
