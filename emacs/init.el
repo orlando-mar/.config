@@ -76,7 +76,6 @@
         org-journal-date-format "%A, %d %B %Y"
 		org-journal-file-type 'weekly))
 
-
 ;;; plantuml
 
 (use-package plantuml-mode
@@ -86,8 +85,7 @@
   (setq plantuml-jar-path (expand-file-name "~/.config/emacs/plantuml/plantuml.jar"))
   (setq org-plantuml-jar-path (expand-file-name "~/.config/emacs/plantuml/plantuml.jar"))
   (add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
-  (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
-  (plantuml-download-jar))
+  (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t))))
 
 ;;; projectile
 
@@ -126,7 +124,6 @@
   :ensure t)
 (use-package treemacs
   :ensure t
-  :after (lsp-mode)
   :config
   (setq treemacs-width 30)
   :bind
@@ -134,7 +131,8 @@
         ("C-x t t" . treemacs)
 		("C-x t a" . treemacs-add-project-to-workspace)
         ("C-x t d" . treemacs-remove-project-from-workspace)
-		("C-x t h" . treemacs-narrow-to-current-file)))
+		("C-x t h" . treemacs-narrow-to-current-file)
+		("C-x t q" . treemacs-add-and-display-current-project))
 (add-hook 'treemacs-mode-hook (lambda () (text-scale-decrease 1)))
 
 (use-package treemacs-projectile
@@ -162,15 +160,6 @@
   :init
   (global-company-fuzzy-mode 1)
   :after (company))
-  
-;;; yasnippet
-
-(use-package yasnippet 
-  :ensure t
-  :init 
-  (yas-global-mode))
-(use-package yasnippet-snippets 
-  :ensure t)
 
 ;;; flycheck
 
@@ -190,60 +179,6 @@
   :init
   (which-key-mode))
 
-;;; lsp-mode
-
-(use-package lsp-mode
-  :ensure t
-  :hook ((java-mode . #'lsp-deferred))
-  :init 
-  (setq lsp-keymap-prefix "C-c l" 
-	lsp-enable-file-watchers nil
-	read-process-output-max (* 1024 1024)  ; 1 mb
-	lsp-completion-provider :capf
-	lsp-idle-delay 0.500
-	tab-width 4)
-  :bind
-  (:map lsp-mode-map
-	("C-c l c" . lsp-execute-code-action))
-  :config 
-  (setq lsp-intelephense-multi-root nil)
-  (with-eval-after-load 'lsp-intelephense
-  (setf (lsp--client-multi-root (gethash 'iph lsp-clients)) nil))
-	(define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
-
-(use-package lsp-java 
-  :ensure t
-  :config 
-  (add-hook 'java-mode-hook 'lsp)
-  (setq lsp-java-vmargs
-      (list
-         "-noverify"
-         "-Xmx1G"
-         "-XX:+UseG1GC"
-         "-XX:+UseStringDeduplication")))
-
-(use-package lsp-treemacs
-  :after (lsp-mode treemacs)
-  :ensure t)
-
-(use-package lsp-ui
-  :ensure t
-  :after (lsp-mode)
-  :init 
-  (setq lsp-ui-doc-position 'bottom
-	lsp-ui-doc-max-width 100)
-  :bind
-  (:map lsp-ui-mode-map
-	("C-c j s" . lsp-ui-doc-show)
-	("C-c j e" . lsp-ui-flycheck-list)))
-
-(use-package helm-lsp
-  :ensure t
-  :after (lsp-mode)
-  :commands (helm-lsp-workspace-symbol)
-  :init 
-  (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
-
 ;;; theme & appearance
 
 (set-face-attribute 'default nil :height 145)
@@ -261,13 +196,6 @@
   :config
   (solaire-global-mode 1))
 
-;; uncomment below to use non-doom nord-theme
-; (use-package nord-theme
-;  :ensure t
-;  :config
-;  (setq nord-region-highlight "frost"))
-;(load-theme 'nord t)
-
 ;;; modeline
 
 (use-package doom-modeline
@@ -280,6 +208,7 @@
   (set-face-attribute 'mode-line-inactive nil :height 120))
 
 ;;; initial buffer setup
+
 (persp-rename "develop")
 (setq initial-buffer-choice (multi-term))
 (rename-buffer "term")
