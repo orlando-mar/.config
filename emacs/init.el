@@ -27,6 +27,7 @@
 (setq custom-file null-device)
 (setq backup-directory-alist '(("." . "~/.backups/")))
 (setq auto-save-file-name-transforms `((".*" "~/.backups/" t)))
+(setq-default tab-width 4)
 
 ;;; magit
 
@@ -86,15 +87,25 @@
 	("C-x f" . find-file)
 	("C-x C-f" . projectile-find-file))
   (:map projectile-mode-map
-	("C-x p" . projectile-command-map)))
+	("C-x p" . projectile-command-map)
+	("C-x p a" . projectile-add-known-project)
+	("C-x p r" . projectile-remove-known-project)))
 
 ;;; perspective
 
 (use-package perspective
+  :ensure t
   :bind
   ("C-x C-b" . persp-counsel-switch-buffer)   ; or use a nicer switcher, see below
-  :config
+  :init
   (persp-mode))
+
+;;; helm
+
+(use-package helm
+  :ensure t
+  :init 
+  (helm-mode 1))
 
 ;;; treemacs
 
@@ -118,9 +129,9 @@
   :bind
   (("C-x t p" . treemacs-projectile)))
 
-(use-package treemacs-perspective
-  :ensure t
-  :config (treemacs-set-scope-type 'Perspectives))
+;(use-package treemacs-perspective
+;  :ensure t
+;  :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package treemacs-magit
   :after (treemacs magit)
@@ -170,7 +181,11 @@
 	lsp-enable-file-watchers nil
 	read-process-output-max (* 1024 1024)  ; 1 mb
 	lsp-completion-provider :capf
-	lsp-idle-delay 0.500)
+	lsp-idle-delay 0.500
+	tab-width 4)
+  :bind
+  (:map lsp-mode-map
+	("C-c l c" . lsp-execute-code-action))
   :config 
   (setq lsp-intelephense-multi-root nil)
   (with-eval-after-load 'lsp-intelephense
@@ -194,7 +209,8 @@
 	lsp-ui-doc-max-width 100)
   :bind
   (:map lsp-ui-mode-map
-	("C-c j s" . lsp-ui-doc-show)))
+	("C-c j s" . lsp-ui-doc-show)
+	("C-c j e" . lsp-ui-flycheck-list)))
 
 (use-package helm-lsp
   :ensure t
@@ -249,6 +265,5 @@
 (delete-other-windows)
 (kill-buffer "*scratch* (writing)")
 (persp-switch "develop")
-
 
 ;;; end init.el
