@@ -24,16 +24,11 @@
 
 (defun initial-buffer-setup ()
   "Create preferred initial buffers & startup commands."
-  (persp-rename "develop")
   (multi-term)
   (rename-buffer "term")
-  (treemacs)
-  (treemacs-collapse-all-projects)
-  (switch-to-buffer "term")
-  (persp-switch "writing")
   (org-journal-new-entry 'todo)
   (delete-other-windows)
-  (persp-switch "develop"))
+  (switch-to-buffer "term"))
 
 (add-hook 'emacs-startup-hook 'initial-buffer-setup)
 (add-hook 'emacs-startup-hook 'toggle-frame-fullscreen t)
@@ -133,8 +128,6 @@
   (doom-themes)
   :config
   (setq doom-modeline-height 1)
-  (set-face-attribute 'mode-line nil :height 120)
-  (set-face-attribute 'mode-line-inactive nil :height 120)
   :init
   (doom-modeline-mode 1))
 
@@ -156,8 +149,11 @@
 ;;;;; org-journal
 
 (use-package org-journal
+  :after
+  (org)
   :config
   (setq org-journal-dir "~/org/journal/"
+		org-journal-file-format "journal-%m-%d"
         org-journal-date-format "%A, %d %B %Y"
 		org-journal-file-type 'weekly))
 
@@ -175,6 +171,8 @@
 ;;;;; plantuml
 
 (use-package plantuml-mode
+  :after
+  (org)
   :config
   (setq plantuml-default-exec-mode 'jar)
   (setq plantuml-jar-path (expand-file-name "~/.config/emacs/plantuml/plantuml.jar"))
@@ -223,7 +221,9 @@
   (doom-themes-treemacs-config)
   (doom-themes-org-config)
   (setq doom-themes-treemacs-theme "doom-colors")
-  (set-face-attribute 'default nil :height 145))
+  (set-face-attribute 'default nil :height 145)
+  (set-face-attribute 'mode-line nil :height 120)
+  (set-face-attribute 'mode-line-inactive nil :height 120))
 
 ;;;;; treemacs
 
